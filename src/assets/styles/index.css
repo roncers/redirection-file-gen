@@ -1,0 +1,15 @@
+/*
+  App-level stylesheet.
+
+  Order matters: fonts and registered properties first, then the reset, then
+  the page-level defaults. The component adds main.css to its own shadow tree.
+*/
+@import "./fonts.css";
+@import "./properties.css";
+@import "./reset.css";
+
+html {
+  color: var(--ink-900);
+  background: var(--canvas);
+  font-family: var(--font-body);
+}

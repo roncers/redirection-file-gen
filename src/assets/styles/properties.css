@@ -1,0 +1,139 @@
+/*
+  Design tokens.
+
+  The palette colors are registered with @property so the browser knows how to
+  parse them, which also gives us a safe initial value and allows them to be
+  animated. Derived tokens are plain custom properties: their values are
+  color-mix() expressions built from the palette, and @property initial values
+  are not allowed to depend on other custom properties.
+
+  The concrete values live on :root and inherit into the component's shadow
+  tree.
+*/
+
+/* Palette */
+@property --mauve {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: hsl(265 100% 87%);
+}
+@property --tea-green {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: hsl(105 100% 86%);
+}
+@property --light-green {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: hsl(102 87% 76%);
+}
+@property --gunmetal {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: hsl(154 7% 19%);
+}
+@property --soft-periwinkle {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: hsl(254 53% 66%);
+}
+@property --dark-magenta {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: hsl(314 83% 33%);
+}
+@property --cotton-bloom {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: hsl(309 100% 70%);
+}
+
+/* Typography */
+@property --font-body {
+  syntax: "*";
+  inherits: true;
+  initial-value: sans-serif;
+}
+@property --font-code {
+  syntax: "*";
+  inherits: true;
+  initial-value: monospace;
+}
+
+:root {
+  /* Palette */
+  --mauve: hsl(265 100% 87%);
+  --tea-green: hsl(105 100% 86%);
+  --light-green: hsl(102 87% 76%);
+  --gunmetal: hsl(154 7% 19%);
+  --soft-periwinkle: hsl(254 53% 66%);
+  --dark-magenta: hsl(314 83% 33%);
+  --cotton-bloom: hsl(309 100% 70%);
+
+  /* Typography */
+  --font-body:
+    Cantarell,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  --font-code: ui-monospace, SFMono-Regular, Consolas, monospace;
+
+  /* Text: gunmetal, progressively lightened with white */
+  --ink-900: var(--gunmetal);
+  --ink-800: color-mix(in srgb, var(--gunmetal) 92%, white 8%);
+  --ink-700: color-mix(in srgb, var(--gunmetal) 84%, white 16%);
+  --ink-600: color-mix(in srgb, var(--gunmetal) 76%, white 24%);
+  --ink-500: color-mix(in srgb, var(--gunmetal) 68%, white 32%);
+  --ink-400: color-mix(in srgb, var(--gunmetal) 58%, white 42%);
+  --ink-300: color-mix(in srgb, var(--gunmetal) 48%, white 52%);
+  --ink-200: color-mix(in srgb, var(--gunmetal) 38%, white 62%);
+  --ink-100: color-mix(in srgb, var(--gunmetal) 28%, white 72%);
+
+  /* Accent */
+  --accent: var(--dark-magenta);
+  --accent-text: var(--dark-magenta);
+  --accent-soft: color-mix(in srgb, var(--soft-periwinkle) 22%, white 78%);
+  --accent-soft-hover: color-mix(
+    in srgb,
+    var(--soft-periwinkle) 32%,
+    white 68%
+  );
+  --accent-hover: color-mix(
+    in srgb,
+    var(--dark-magenta) 90%,
+    var(--accent-soft) 10%
+  );
+  --accent-focus: var(--cotton-bloom);
+  --accent-ring: color-mix(in srgb, var(--cotton-bloom) 55%, white 45%);
+  --cotton-bloom-hover: color-mix(
+    in srgb,
+    var(--cotton-bloom) 65%,
+    var(--dark-magenta) 35%
+  );
+
+  /* Surfaces */
+  --canvas: var(--mauve);
+  --canvas-glow: color-mix(in srgb, var(--soft-periwinkle) 55%, transparent);
+  --surface: color-mix(in srgb, var(--mauve) 25%, white 75%);
+  --surface-glass: color-mix(in srgb, var(--mauve) 60%, white 40%);
+  --surface-muted: color-mix(in srgb, var(--mauve) 70%, white 30%);
+
+  /* Borders */
+  --border: color-mix(in srgb, var(--mauve) 80%, white 20%);
+  --border-strong: color-mix(in srgb, var(--soft-periwinkle) 45%, white 55%);
+  --border-subtle: color-mix(in srgb, var(--soft-periwinkle) 25%, white 75%);
+  --border-code: color-mix(in srgb, var(--soft-periwinkle) 35%, white 65%);
+
+  /* States */
+  --success: color-mix(in srgb, var(--light-green) 25%, var(--gunmetal) 75%);
+  --danger: var(--dark-magenta);
+
+  /* Shadows */
+  --shadow-accent: color-mix(in srgb, var(--dark-magenta) 24%, transparent);
+  --shadow-cotton: color-mix(in srgb, var(--cotton-bloom) 45%, transparent);
+  --shadow-soft: color-mix(in srgb, var(--gunmetal) 12%, transparent);
+  --focus-glow: color-mix(in srgb, var(--cotton-bloom) 30%, transparent);
+}

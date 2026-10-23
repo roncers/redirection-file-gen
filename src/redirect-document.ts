@@ -4,7 +4,7 @@ export function createRedirectDocument(destination: string): string {
   try {
     url = new URL(destination.trim());
   } catch {
-    throw new Error("Enter a valid destination URL, including https:// or http://.");
+    throw new Error("Enter a valid destination address, like example.com/your-page.");
   }
 
   if (url.protocol !== "http:" && url.protocol !== "https:") {

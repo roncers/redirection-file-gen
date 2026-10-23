@@ -11,8 +11,8 @@ npm install
 npm run dev
 ```
 
-Enter an `http://` or `https://` URL, generate the redirect page, and download it
-as `redirect.html`.
+Enter a destination address, choose the `http://` or `https://` protocol, generate
+the redirect page, and download it as `redirect.html`.
 
 ## Build
 
