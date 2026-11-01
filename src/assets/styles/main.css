@@ -156,6 +156,10 @@ label {
   appearance: none;
 }
 
+.scheme option:hover {
+  background: var(--accent-soft-hover);
+}
+
 .chevron {
   position: absolute;
   top: 50%;
@@ -221,71 +225,47 @@ button:active:not(:disabled) {
   transform: translateY(1px);
 }
 
-.generate {
-  width: 100%;
-  margin-top: 22px;
-  color: var(--surface);
-  background: var(--dark-magenta);
+.filename-label {
+  margin-top: 18px;
 }
 
-.generate:hover {
-  background: var(--accent-hover);
+.filename input {
+  padding-left: 15px;
 }
 
-.result {
-  margin-top: 28px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.result[hidden] {
-  display: none;
-}
-
-.result-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 11px;
-}
-
-.result-heading label {
-  margin: 0;
-}
-
-.ready {
-  color: var(--success);
-  font-size: 12px;
+.extension {
+  flex: none;
+  padding-right: 15px;
+  color: var(--ink-500);
+  font-size: 14px;
   font-weight: 650;
-}
-
-textarea {
-  display: block;
-  width: 100%;
-  min-height: 176px;
-  resize: vertical;
-  padding: 13px;
-  border: 1px solid var(--border-code);
-  border-radius: 9px;
-  color: var(--ink-700);
-  background: var(--surface-muted);
-  font-family: var(--font-code);
-  font-size: 11px;
-  line-height: 1.6;
+  user-select: none;
 }
 
 .download {
   width: 100%;
-  margin-top: 12px;
+  margin-top: 22px;
   color: var(--surface);
   background: var(--cotton-bloom);
 }
 
-.download:hover {
+.download:hover:not(:disabled) {
   background: var(--cotton-bloom-hover);
   box-shadow: 0 8px 20px var(--shadow-cotton);
   transform: translateY(-1px);
+}
+
+.download:disabled {
+  color: var(--ink-400);
+  background: color-mix(in srgb, var(--cotton-bloom) 22%, var(--surface) 78%);
+  cursor: not-allowed;
+}
+
+.file-label {
+  max-width: 55%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .error {
@@ -293,6 +273,11 @@ textarea {
   margin: 9px 0 0;
   color: var(--danger);
   font-size: 12px;
+}
+
+.error:empty {
+  min-height: 0;
+  margin: 0;
 }
 
 footer {
